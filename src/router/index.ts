@@ -26,6 +26,33 @@ const router = createRouter({
       }
     },
     {
+      name: "profile",
+      path: "/profile",
+      component: () => import("../views/Profile.vue"),
+      meta: {
+        layout: LayoutsDto.Default,
+        authRequire: true,
+      }
+    },
+    {
+      name: "weather",
+      path: "/weather",
+      component: () => import("../views/Weather.vue"),
+      meta: {
+        layout: LayoutsDto.Default,
+        authRequire: true,
+      }
+    },
+    {
+      name: "todos",
+      path: "/todos",
+      component: () => import("../views/Todos.vue"),
+      meta: {
+        layout: LayoutsDto.Default,
+        authRequire: true,
+      }
+    },
+    {
       path: '/:catchAll(.*)',
       name: 'NotFound',
       component: () => import("../views/NotFound.vue"),

@@ -3,26 +3,42 @@
     <a-layout-sider v-model:collapsed="collapsed" :trigger="null" collapsible>
       <div class="logo" />
       <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline">
-        <a-menu-item key="/">
-          <icon>
-            <template #component>
-              <VIcon class="text-[20px]" icon="mdi-home" />
-            </template>
-          </icon>
-          <span>Dashboard</span>
-        </a-menu-item>
-        <a-menu-item key="/weather">
-          <icon>
-            <template #component>
-              <VIcon class="text-[20px]" icon="mdi-weather-hazy" />
-            </template>
-          </icon>
-          <span>Weather</span>
-        </a-menu-item>
-        <a-menu-item key="/profile">
-          <UserOutlined style="font-size: 18px;" />          
-          <span>Profile</span>
-        </a-menu-item>
+        <RouterLink to="/">
+          <a-menu-item key="/">
+            <icon>
+              <template #component>
+                <VIcon class="text-[20px]" icon="mdi-home" />
+              </template>
+            </icon>
+            <span>Dashboard</span>
+          </a-menu-item>
+        </RouterLink>
+        <RouterLink to="/weather">
+          <a-menu-item key="/weather">
+            <icon>
+              <template #component>
+                <VIcon class="text-[20px]" icon="mdi-weather-hazy" />
+              </template>
+            </icon>
+            <span>Weather</span>
+          </a-menu-item>
+        </RouterLink>
+        <RouterLink to="/todos">
+          <a-menu-item key="/todos">
+            <icon>
+              <template #component>
+                <VIcon class="text-[20px]" icon="mdi-checkbox-marked" />
+              </template>
+            </icon>
+            <span>Todos</span>
+          </a-menu-item>
+        </RouterLink>
+        <RouterLink to="/profile">
+          <a-menu-item key="/profile">
+            <UserOutlined style="font-size: 18px;" />          
+            <span>Profile</span>
+          </a-menu-item>
+        </RouterLink>
       </a-menu>
     </a-layout-sider>
     <a-layout>
