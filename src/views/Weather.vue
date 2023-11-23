@@ -43,7 +43,7 @@ interface ApiRes {
     weather: { description: string }[]
 }
 
-const data = ref<ApiRes>()
+const data = ref<ApiRes | null>()
 const loading = ref(false)
 
 const getData = async (cityName: string) => {
@@ -53,6 +53,7 @@ const getData = async (cityName: string) => {
             notification.error({
                 message: res.value.message,
             })
+            data.value = null
             loading.value = false
             return
         }
