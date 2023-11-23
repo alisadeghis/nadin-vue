@@ -35,27 +35,29 @@
         </RouterLink>
         <RouterLink to="/profile">
           <a-menu-item key="/profile">
-            <UserOutlined style="font-size: 18px;" />          
+            <UserOutlined style="font-size: 18px;" />
             <span>Profile</span>
           </a-menu-item>
         </RouterLink>
+        <a-menu-item @click="userStore.logOut">
+          <icon>
+            <template #component>
+              <VIcon class="text-[18px] mt-3" icon="mdi-logout" />
+            </template>
+          </icon>
+          <span>Log Out</span>
+        </a-menu-item>
       </a-menu>
     </a-layout-sider>
     <a-layout>
       <a-layout-header style="background: #fff; padding: 0 15px">
         <div class="flex items-center">
-          <menu-unfold-outlined
-            v-if="collapsed"
-            class="trigger"
-            @click="() => (collapsed = !collapsed)"
-          />
+          <menu-unfold-outlined v-if="collapsed" class="trigger" @click="() => (collapsed = !collapsed)" />
           <menu-fold-outlined v-else class="trigger" @click="() => (collapsed = !collapsed)" />
           <span class="ml-2 font-bold">{{ timer }}</span>
         </div>
       </a-layout-header>
-      <a-layout-content
-        :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }"
-      >
+      <a-layout-content :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }">
         <slot />
       </a-layout-content>
     </a-layout>
@@ -70,10 +72,16 @@ import {
 } from '@ant-design/icons-vue';
 import Icon, { HomeOutlined } from '@ant-design/icons-vue';
 import { useRoute } from 'vue-router';
+import { useUser } from '@/stores/user'
+const userStore = useUser()
 const route = useRoute()
 const selectedKeys = ref<string[]>([route.path]);
 const collapsed = ref<boolean>(false);
 const timer = ref('')
+
+// const logOut = () => {
+//   localStorage.clear()
+// }
 
 const setTimer = () => {
   const date = new Date()
