@@ -26,6 +26,7 @@ import { useUser } from '@/stores/user';
 interface FormState {
     username: string;
     password: string;
+    location: string;
 }
 
 const userStore = useUser()
@@ -41,7 +42,9 @@ const openNotification = () => {
 const formState = reactive<FormState>({
     username: '',
     password: '',
+    location: '',
 });
+
 const onFinish = (values: FormState) => {
     if (values.username) {
         openNotification()
