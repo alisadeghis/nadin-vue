@@ -1,17 +1,17 @@
 <template>
     <div>
-        <h1 class="font-bold text-xl">Weather</h1>
+        <h1 class="font-bold text-xl">{{ $t('weather.title') }}</h1>
         <div class="mt-10">
             <form>
                 <div class="">
-                    <label class="block mb-1">Task Name:</label>
+                    <label class="block mb-1">{{ $t('weather.inputTitle') }}:</label>
                     <!-- <a-input v-model:value="location" placeholder="input here" /> -->
                     <a-select ref="select" v-model:value="location" style="width: 120px">
                         <a-select-option v-for="(city, i) in citys" :key="i" :value="city.city">{{ city.city }}</a-select-option>
                     </a-select>
                 </div>
                 <button @click="getData(location)" type="button"
-                    class="px-10 py-2 bg-green-100 text-green-600 mt-5 hover:bg-green-200 rounded-xl">Add Task</button>
+                    class="px-10 py-2 bg-green-100 text-green-600 mt-5 hover:bg-green-200 rounded-xl">{{ $t('weather.buttonTitle') }}</button>
             </form>
         </div>
         <div v-if="data && !loading" class="flex mt-10 bg-stone-50 flex-col w-full max-w-[300px] mx-auto shadow-lg rounded-xl p-5">
@@ -22,7 +22,7 @@
         <div v-else-if="loading" class="flex items-center justify-center p-10">
             <ASpin size="large" />
         </div>
-        <div v-else class="flex items-center justify-center p-10">Not Data</div>
+        <div v-else class="flex items-center justify-center p-10">{{ $t('weather.notFound') }}</div>
     </div>
 </template>
 

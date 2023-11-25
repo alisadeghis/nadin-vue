@@ -1,5 +1,6 @@
-import './assets/main.css'
 import 'ant-design-vue/dist/reset.css';
+import './assets/css/font.css'
+import './assets/css/main.css'
 
 import { createApp, markRaw } from 'vue'
 import { createPinia } from 'pinia'
@@ -9,6 +10,7 @@ import { Icon } from '@iconify/vue';
 
 import App from './App.vue'
 import router from './router'
+import i18n from './i18n';
 
 const app = createApp(App)
 const pinia = createPinia()
@@ -19,6 +21,7 @@ pinia.use(({store}) => {
 app.use(createI18n);
 app.use(router)
 app.use(Antd);
+app.use(i18n);
 app.component('VIcon', Icon);
 
 app.mount('#app')

@@ -1,7 +1,7 @@
 <template>
     <div :class="{ 'opacity-50': todo.status === TodoStatus.Done }"
         class="todo duration-200 p-4 justify-between rounded-xl bg-stone-50 shadow-lg flex items-center">
-        <input ref="input" v-show="isEdit" class="p-3 max-w-[300px]" placeholder="enter new Task" v-model="editValue" type="text">
+        <input ref="input" v-show="isEdit" class="p-3 max-w-[300px]" v-model="editValue" type="text">
         <span v-show="!isEdit" class="font-bold text-stone-500">{{ todo.title }}</span>
         <div v-if="isEdit" class="flex items-center">
             <button @click="onChangeTodo(todoEditId, editValue)"
